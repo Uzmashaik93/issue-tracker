@@ -5,6 +5,8 @@ import {
   DropdownMenu,
   Button,
 } from "@radix-ui/themes";
+import { FaRegEdit } from "react-icons/fa";
+
 import { Text } from "@radix-ui/themes/components/callout";
 
 interface IssueProps {
@@ -22,12 +24,12 @@ const IssueDetailPage = async ({ params }: IssueProps) => {
   return (
     <div className="flex flex-col md:flex-row justify-between gap-10 mt-8">
       {/* Left Side – 60% width */}
-      <div className="w-full md:w-3/4">
+      <div className="w-full md:w-3/4 flex flex-col gap-4">
         <Heading size="7" className="mb-3">
           {issueDetails.title}
         </Heading>
 
-        <div className="flex items-center space-x-3 mb-4">
+        <div className="flex items-center space-x-3">
           <Badge
             color={
               issueDetails.status === "OPEN"
@@ -59,9 +61,16 @@ const IssueDetailPage = async ({ params }: IssueProps) => {
               <DropdownMenu.TriggerIcon />
             </Button>
           </DropdownMenu.Trigger>
+          <DropdownMenu.Content>
+            <DropdownMenu.Item>All</DropdownMenu.Item>
+            <DropdownMenu.Item>Open</DropdownMenu.Item>
+            <DropdownMenu.Item>In progress</DropdownMenu.Item>
+            <DropdownMenu.Item>Closed</DropdownMenu.Item>
+          </DropdownMenu.Content>
         </DropdownMenu.Root>
 
-        <Button color="indigo" className="w-full">
+        <Button color="violet" className="w-full">
+          <FaRegEdit />
           Edit Issue
         </Button>
 
