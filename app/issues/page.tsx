@@ -73,6 +73,11 @@ const IssuesPage = async () => {
                 <Table.Cell>
                   {new Date(issue.createdAt).toDateString()}
                 </Table.Cell>
+                <Table.Cell>
+                  <Button variant="outline" size="1">
+                    <Link href={`/issues/details/${issue.id}`}>View</Link>
+                  </Button>
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
