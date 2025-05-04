@@ -70,8 +70,7 @@ const IssueDetailClient = ({ issueDetails }: { issueDetails: Issue }) => {
       {/* Left Side – 60% width */}
       <div className="w-full md:w-3/4 flex flex-col gap-3">
         {isEditing ? (
-          <input
-            type="text"
+          <TextArea
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="text-2xl font-bold border border-gray-300 rounded px-3 py-2 w-full"
