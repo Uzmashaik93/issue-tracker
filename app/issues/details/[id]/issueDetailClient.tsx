@@ -18,6 +18,7 @@ const IssueDetailClient = ({ issueDetails }: { issueDetails: Issue }) => {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [title, setTitle] = useState(issueDetails.title);
 
   const [description, setDescription] = useState(issueDetails.description);
 
@@ -68,9 +69,18 @@ const IssueDetailClient = ({ issueDetails }: { issueDetails: Issue }) => {
     <div className="flex flex-col md:flex-row justify-between gap-10 mt-3">
       {/* Left Side – 60% width */}
       <div className="w-full md:w-3/4 flex flex-col gap-3">
-        <Heading size="7" className="mb-3">
-          {issueDetails.title}
-        </Heading>
+        {isEditing ? (
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="text-2xl font-bold border border-gray-300 rounded px-3 py-2 w-full"
+          />
+        ) : (
+          <Text size="7" className="mb-3 font-bold">
+            {title}
+          </Text>
+        )}
 
         <div className="flex items-center space-x-3">
           <Badge
@@ -94,6 +104,7 @@ const IssueDetailClient = ({ issueDetails }: { issueDetails: Issue }) => {
           defaultValue={description}
           readOnly={!isEditing}
           onChange={(e) => setDescription(e.target.value)}
+          onClick={() => setIsEditing(true)}
         />
       </div>
 
